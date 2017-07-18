@@ -18,7 +18,8 @@ describe('Q4_map_and_reduce', () => test('Answer', () => {
 
   // 1번 문제.
   // 참고: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
-  const playerNames = players.map(player => {
+  const playerNames = players.map(player => { 
+    return player.name;  
     /* 여기에 map 에 전달되는 함수를 구현하세요. */
   });
   expect(playerNames).toEqual( // 실행한 결과가 아래와 같은지 비교합니다.
@@ -28,9 +29,12 @@ describe('Q4_map_and_reduce', () => test('Answer', () => {
 
   // 2번 문제
   // 참고: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
-  const usersPerType = players.reduce((result, player) => {
+  const usersPerType = players.reduce((result, player) => { 
+    result[player.type] = result[player.type] ?result[player.type] + 1 :1 ;
+    return result;
+  } , {} );
     /* 여기에 reduce 에 전달되는 함수를 구현하세요 */
-  }, {});
+
   expect(usersPerType).toEqual(
     {
       도적: 1,
